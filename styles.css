@@ -24,6 +24,13 @@ h1 {
   margin: 10px 4px;
 }
 
+p span {
+  background: red;
+  border-radius: 50%;
+  padding: 1px 6px;
+  color: white;
+}
+
 input {
   flex: 1;
   outline: 0;
