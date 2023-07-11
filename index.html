@@ -8,7 +8,22 @@
   </head>
   <body>
     <div class="container">
-      <h1>To-Do List</h1>
+      <header>
+        <h1>To-Do List</h1>
+        <p>You have 3 pending tasks</p>
+      </header>
+      <div class="add-todo-header">
+        <input type="text" placeholder="Enter your text" id="input-box" />
+        <button class="add-btn" id="add-button">Add</button>
+      </div>
+      <div>
+        <ul>
+          <li>Feed Wasabi</li>
+          <li>Take out garbage</li>
+          <li>Hoover downstairs</li>
+        </ul>
+      </div>
+      <button class="clear-btn" id="clear-button">Clear all</button>
     </div>
     <script src="script.js"></script>
   </body>
