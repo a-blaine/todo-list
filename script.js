@@ -9,6 +9,10 @@ function addTask() {
     let task = document.createElement("li");
     task.innerHTML = inputBox.value;
     listContainer.appendChild(task);
+
+    let closeIcon = document.createElement("span");
+    closeIcon.innerHTML = "\u00d7";
+    task.appendChild(closeIcon);
   }
 }
 
