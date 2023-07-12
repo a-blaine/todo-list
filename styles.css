@@ -54,8 +54,31 @@ ul li {
   list-style: none;
   margin: 10px auto;
   font-size: 18px;
-  padding: 12px 8px 12px 40px;
+  padding: 12px 8px 12px 50px;
   cursor: pointer;
+  position: relative;
+}
+
+ul li::before {
+  content: "";
+  background-image: url(images/unchecked.png);
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 12px;
+  left: 8px;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+}
+
+ul li.checked {
+  color: #555;
+  text-decoration: line-through;
+}
+
+ul li.checked::before {
+  background-image: url(images/checked.png);
 }
 
 .container {
