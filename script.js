@@ -8,12 +8,35 @@ function addTask() {
   } else {
     let task = document.createElement("li");
     task.innerHTML = inputBox.value;
-    listContainer.appendChild(task);
 
     let closeIcon = document.createElement("span");
     closeIcon.innerHTML = "\u00d7";
+
+    listContainer.appendChild(task);
     task.appendChild(closeIcon);
   }
+  inputBox.value = "";
+  saveData();
+}
+
+function saveData() {
+  localStorage.setItem("data", listContainer.innerHTML);
+}
+
+function displayTasks() {
+  listContainer.innerHTML = localStorage.getItem("data");
 }
 
 addTodoButton.addEventListener("click", addTask);
+
+listContainer.addEventListener("click", (event) => {
+  if (event.target.tagName === "LI") {
+    event.target.classList.toggle("checked");
+    saveData();
+  } else if (event.target.tagName === "SPAN") {
+    event.target.parentElement.remove();
+    saveData();
+  }
+});
+
+displayTasks();
