@@ -1,6 +1,8 @@
 const inputBox = document.querySelector("#input-box");
 const listContainer = document.querySelector("#list-container");
 const addTodoButton = document.querySelector("#add-button");
+const clearAllButton = document.querySelector("#clear-button");
+const pendingTasks = document.querySelector("#pending-task");
 
 function addTask() {
   if (inputBox.value === "") {
@@ -27,7 +29,13 @@ function displayTasks() {
   listContainer.innerHTML = localStorage.getItem("data");
 }
 
+function deleteAllTasks() {
+  listContainer.innerHTML = "";
+  saveData();
+}
+
 addTodoButton.addEventListener("click", addTask);
+clearAllButton.addEventListener("click", deleteAllTasks);
 
 listContainer.addEventListener("click", (event) => {
   if (event.target.tagName === "LI") {
