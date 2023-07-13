@@ -26,14 +26,12 @@ function addTask() {
 
 function addPendingTasks() {
   totalTasks++;
-
   pendingTasks.innerHTML = totalTasks;
   saveData();
 }
 
 function removePendingTasks() {
   totalTasks--;
-
   pendingTasks.innerHTML = totalTasks;
   saveData();
 }
@@ -62,6 +60,13 @@ clearAllButton.addEventListener("click", deleteAllTasks);
 listContainer.addEventListener("click", (event) => {
   if (event.target.tagName === "LI") {
     event.target.classList.toggle("checked");
+
+    if (event.target.classList.contains("checked")) {
+      removePendingTasks();
+    } else {
+      addPendingTasks();
+    }
+
     saveData();
   } else if (event.target.tagName === "SPAN") {
     event.target.parentElement.remove();
