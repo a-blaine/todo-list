@@ -2,7 +2,8 @@ const inputBox = document.querySelector("#input-box");
 const listContainer = document.querySelector("#list-container");
 const addTodoButton = document.querySelector("#add-button");
 const clearAllButton = document.querySelector("#clear-button");
-const pendingTasks = document.querySelector("#pending-task");
+const pendingTasks = document.querySelector("#pending-tasks");
+let totalTasks = 0;
 
 function addTask() {
   if (inputBox.value === "") {
@@ -16,25 +17,46 @@ function addTask() {
 
     listContainer.appendChild(task);
     task.appendChild(closeIcon);
+
+    addPendingTasks();
   }
   inputBox.value = "";
   saveData();
 }
 
+function addPendingTasks() {
+  totalTasks++;
+
+  pendingTasks.innerHTML = totalTasks;
+  saveData();
+}
+
+function removePendingTasks() {
+  totalTasks--;
+
+  pendingTasks.innerHTML = totalTasks;
+  saveData();
+}
+
 function saveData() {
   localStorage.setItem("data", listContainer.innerHTML);
+  localStorage.setItem("number", pendingTasks.innerHTML);
 }
 
 function displayTasks() {
   listContainer.innerHTML = localStorage.getItem("data");
+  pendingTasks.innerHTML = localStorage.getItem("number");
 }
 
 function deleteAllTasks() {
   listContainer.innerHTML = "";
+  totalTasks = 0;
+  pendingTasks.innerHTML = totalTasks;
   saveData();
 }
 
 addTodoButton.addEventListener("click", addTask);
+
 clearAllButton.addEventListener("click", deleteAllTasks);
 
 listContainer.addEventListener("click", (event) => {
@@ -43,6 +65,7 @@ listContainer.addEventListener("click", (event) => {
     saveData();
   } else if (event.target.tagName === "SPAN") {
     event.target.parentElement.remove();
+    removePendingTasks();
     saveData();
   }
 });
