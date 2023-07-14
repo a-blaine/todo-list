@@ -8,11 +8,18 @@
 
 body {
   min-height: 100dvh;
+  font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: "Poppins", sans-serif;
+
+  background: rgb(238, 174, 202);
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
 }
 
 header {
@@ -26,10 +33,11 @@ h1 {
 }
 
 p span {
-  background: rgb(251, 136, 136);
+  background: rgb(220, 130, 169);
   border-radius: 50%;
-  padding: 1px 6px;
+  padding: 0 6px;
   color: white;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 
 input {
@@ -101,10 +109,11 @@ ul li span:hover {
 }
 
 .container {
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(5px);
   padding: 1.2rem;
   width: 500px;
-  min-height: 300px;
+  min-height: 250px;
   border-radius: 8px;
 }
 
@@ -136,4 +145,84 @@ ul li span:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 575px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .container {
+    width: 420px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+
+  button {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  ul li span {
+    font-size: 16px;
+  }
+
+  ul li {
+    font-size: 14px;
+    padding: 10px 8px 4px 35px;
+  }
+
+  ul li::before {
+    height: 20px;
+    width: 20px;
+  }
+
+  .container {
+    width: 350px;
+  }
+
+  .clear-btn {
+    width: 80%;
+    margin: 1.2rem auto;
+  }
+}
+
+@media (max-width: 393px) {
+  h1 {
+    margin: 4px;
+  }
+
+  ul li::before {
+    height: 18px;
+    width: 18px;
+  }
+
+  ul li span {
+    width: 10px;
+    height: 10px;
+  }
+
+  input {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .container {
+    width: 320px;
+    padding: 1rem;
+  }
+
+  .clear-btn {
+    margin: 0.6rem auto;
+  }
 }
